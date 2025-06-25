@@ -11,8 +11,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ensure it doesn't overflow vertically */
-  width: 100vw;  /* Ensure it doesn't overflow horizontally */
 }
 
 button,
