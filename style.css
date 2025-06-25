@@ -117,3 +117,23 @@ button:focus {
 .inc-arrow {
   margin-right: 12px;
 }
+
+.fa-play {
+  color: black;
+}
+
+.fa-pause {
+  color: black;
+}
+
+.fa-refresh {
+  color: black;
+}
+
+.fa-arrow-up {
+  color: black;
+}
+
+.fa-arrow-down {
+  color: black;
+}
