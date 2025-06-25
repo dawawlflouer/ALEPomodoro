@@ -21,16 +21,16 @@ button:active {
   height: 40px;
   border-radius: 100%;
   text-align: center;
-  box-shadow: 0.2em 0.2em rgb(120, 150, 145);
-  -webkit-box-shadow: 0.2em 0.2em rgb(120, 150, 145);
-  -moz-box-shadow: 0.2em 0.2em rgb(120, 150, 145);
+  box-shadow: 0.2em 0.2em rgb(227, 227, 227);
+  -webkit-box-shadow: 0.2em 0.2em rgb(227, 227, 227);
+  -moz-box-shadow: 0.2em 0.2em rgb(227, 227, 227);
 }
 
 button:focus {
   translate: 0.2em 0.2em;
-  box-shadow: 0.2em 0.2em rgb(120, 150, 145) inset;
-  -webkit-box-shadow: 0.2em 0.2em rgb(120, 150, 145) inset;
-  -moz-box-shadow: 0.2em 0.2em rgb(120, 150, 145) inset;
+  box-shadow: 0.2em 0.2em rgb(227, 227, 227) inset;
+  -webkit-box-shadow: 0.2em 0.2em rgb(227, 227, 227) inset;
+  -moz-box-shadow: 0.2em 0.2em rgb(227, 227, 227) inset;
 }
 
 /* Clock Body */
