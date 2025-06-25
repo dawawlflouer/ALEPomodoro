@@ -17,7 +17,6 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;         /* pushes content downward from the top */
 }
 
 button,
