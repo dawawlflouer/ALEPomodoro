@@ -2,15 +2,22 @@
 
 /* General */
 
-body {
+body, html {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  justify-content: center;  /* centers content horizontally */
   font-family: 'Roboto Mono', monospace;
   // background-color: #ffffff;
 }
 
 #root {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 20px;         /* pushes content downward from the top */
 }
 
 button,
