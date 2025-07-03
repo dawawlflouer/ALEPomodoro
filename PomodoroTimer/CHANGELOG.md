@@ -3,7 +3,6 @@
 All notable changes to this project will be documented in this file.  
 This project follows [Semantic Versioning](https://semver.org/).
 
----
 
 ## [v1.1.0] - 2025-07-03
 
@@ -18,7 +17,6 @@ This project follows [Semantic Versioning](https://semver.org/).
 - `#timer-label` spacing and vertical alignment improved using `line-height`
 - Session/break containers aligned using flexbox and margin fixes
 
----
 
 ## [v1.0.0] - 2025-07-03
 
