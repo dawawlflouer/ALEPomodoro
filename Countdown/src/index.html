@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
   <title>ALE 2026 Countdown</title>
   <style>
@@ -17,6 +17,7 @@
       align-items: start;
       height: 100vh;
       overflow: hidden;
+      color: #000;
     }
 
     #counter {
@@ -31,10 +32,10 @@
       padding: 10px;
       min-width: 40px;
       height: 40px;
-      border: 3px solid #b3b3b3;
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: #d6e4ef;
-      box-shadow: 2px 2px 1px 0px #b3b3b3;
+      border: 3px solid #a7b6c2; /* 3 shades darker */
+      box-shadow: 2px 2px 1px 0px #a7b6c2;
     }
 
     h2 {
@@ -57,11 +58,10 @@
       body {
         color: #f0f0f0;
       }
-
       .box {
-        border-color: #3a3a3a;
         background-color: #7ba3ad;
-        box-shadow: 2px 2px 1px 0px #3a3a3a;
+        border: 3px solid #4f6e75; /* 3 shades darker */
+        box-shadow: 2px 2px 1px 0px #4f6e75;
       }
     }
   </style>
@@ -89,7 +89,6 @@
     function showRemaining() {
       const now = new Date();
       const targetDate = new Date("January 1, 2026 00:00:00");
-
       const timeDifference = targetDate - now;
 
       if (timeDifference > 0) {
