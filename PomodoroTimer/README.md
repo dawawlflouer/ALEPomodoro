@@ -2,16 +2,14 @@
 
 A clean, minimalistic Pomodoro timer widget built with HTML & CSS — featuring **dark mode support**, **customizable theme colors**, and a responsive layout. Designed to blend seamlessly with both light and dark environments.
 
----
 
 ## 🌐 Live Demo
-
-> Add your Vercel link here:
 **[🔗 View Live](https://alestudyhub-pomodoro.vercel.app/)**
 
----
 
 ## 📸 Preview
+### Original Version
+![Light Mode Screenshot](./screenshots/original-version.png)
 
 ### Light Mode  
 ![Light Mode Screenshot](./screenshots/light-mode.png)
@@ -19,7 +17,6 @@ A clean, minimalistic Pomodoro timer widget built with HTML & CSS — featuring 
 ### Dark Mode  
 ![Dark Mode Screenshot](./screenshots/dark-mode.png)
 
----
 
 ## ⚙️ Features
 
@@ -30,7 +27,6 @@ A clean, minimalistic Pomodoro timer widget built with HTML & CSS — featuring 
 - 🎛️ Session/break timers with increment/decrement controls
 - 🎯 Font Awesome icons for control buttons
 
----
 
 ## 📦 Based On
 
