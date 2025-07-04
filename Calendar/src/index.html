@@ -8,6 +8,7 @@
   <style>
     * {
       margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
@@ -54,7 +55,7 @@
       background: #fff;
       border-radius: 50%;
       cursor: pointer;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
 
     .cal-head #prev:hover, 
@@ -205,72 +206,72 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const dates = document.querySelector(".dates");
-      const header = document.querySelector(".title");
-      const nav = document.querySelectorAll("#prev, #next");
+    const dates = document.querySelector(".dates");
+    const header = document.querySelector(".title");
+    const nav = document.querySelectorAll("#prev, #next");
 
-      const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December",
-      ];
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December",
+    ];
 
-      let date = new Date();
-      let month = date.getMonth();
-      let year = date.getFullYear();
+    let date = new Date();
+    let month = date.getMonth();
+    let year = date.getFullYear();
 
-      function renderCalendar() {
-        const start = new Date(year, month, 1).getDay();
-        const endDate = new Date(year, month + 1, 0).getDate();
-        const end = new Date(year, month, endDate).getDay();
-        const endDatePrev = new Date(year, month, 0).getDate();
+    function renderCalendar() {
+      const start = new Date(year, month, 1).getDay();
+      const endDate = new Date(year, month + 1, 0).getDate();
+      const end = new Date(year, month, endDate).getDay();
+      const endDatePrev = new Date(year, month, 0).getDate();
 
-        let datesHtml = "";
+      let datesHtml = "";
 
-        for (let i = start; i > 0; i--) {
-          datesHtml += `<li class="old"><span>${endDatePrev - i + 1}</span></li>`;
-        }
-
-        for (let i = 1; i <= endDate; i++) {
-          let className = i === date.getDate() &&
-                          month === new Date().getMonth() &&
-                          year === new Date().getFullYear()
-                          ? ' class="today"' : "";
-          datesHtml += `<li${className}><span>${i}</span></li>`;
-        }
-
-        for (let i = end; i < 6; i++) {
-          datesHtml += `<li class="old"><span>${i - end + 1}</span></li>`;
-        }
-
-        dates.innerHTML = datesHtml;
-        header.textContent = `${months[month]} ${year}`;
+      for (let i = start; i > 0; i--) {
+        datesHtml += `<li class="old"><span>${endDatePrev - i + 1}</span></li>`;
       }
 
-      nav.forEach(nav => {
-        nav.addEventListener("click", e => {
-          const btnId = e.target.id;
+      for (let i = 1; i <= endDate; i++) {
+        const isToday =
+          i === new Date().getDate() &&
+          month === new Date().getMonth() &&
+          year === new Date().getFullYear();
 
-          if (btnId === 'prev' && month === 0) {
-            year--;
-            month = 11;
-          } else if (btnId === 'next' && month === 11) {
-            year++;
-            month = 0;
-          } else {
-            month = (btnId === 'next') ? month + 1 : month - 1;
-          }
+        const className = isToday ? ' class="today"' : "";
+        datesHtml += `<li${className}><span>${i}</span></li>`;
+      }
 
-          date = new Date(year, month, new Date().getDate());
-          year = date.getFullYear();
-          month = date.getMonth();
+      for (let i = end; i < 6; i++) {
+        datesHtml += `<li class="old"><span>${i - end + 1}</span></li>`;
+      }
 
-          renderCalendar();
-        });
+      dates.innerHTML = datesHtml;
+      header.textContent = `${months[month]} ${year}`;
+    }
+
+    nav.forEach(button => {
+      button.addEventListener("click", e => {
+        const id = e.target.id;
+
+        if (id === 'prev' && month === 0) {
+          year--;
+          month = 11;
+        } else if (id === 'next' && month === 11) {
+          year++;
+          month = 0;
+        } else {
+          month = id === 'next' ? month + 1 : month - 1;
+        }
+
+        date = new Date(year, month, new Date().getDate());
+        month = date.getMonth();
+        year = date.getFullYear();
+
+        renderCalendar();
       });
-
-      renderCalendar();
     });
+
+    renderCalendar();
   </script>
 </body>
 </html>
