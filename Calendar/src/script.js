@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ⬇️ All your original JS goes here (exactly as you gave it)
-
   const dates = document.querySelector(".dates");
   const header = document.querySelector(".title");
   const nav = document.querySelectorAll("#prev, #next");
