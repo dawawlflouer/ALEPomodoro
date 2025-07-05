@@ -1,180 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// 📅 Select the DOM elements for calendar dates container, title, and navigation buttons
+const dates = document.querySelector(".dates");
+const header = document.querySelector(".title");
+const nav = document.querySelectorAll("#prev, #next");
 
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
+// 🗓️ Array of month names to display in header
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
 
-.bg {
-  background: #ffffff;
-  display: flex;
-  height: flex-start;
-  padding-top: 20px;
-  align-items: center;
-  justify-content: center;
-}
+// 📌 Initialize current date information
+let date = new Date();           // Today's full date
+let month = date.getMonth();     // Current month (0-11)
+let year = date.getFullYear();   // Current year (e.g. 2025)
 
-.calendar {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  width: 400px;
-  background: #F5F5F5;
-  box-shadow: 0px 5px 5px #ccc;
-  border-radius: 10px;
-  padding: 20px;
-}
+/**
+ * 🛠️ Function to generate and render the calendar for the current month and year
+ */
+function renderCalendar() {
+  // 🔢 Get the weekday index of the 1st day of the month (0 = Sunday)
+  const start = new Date(year, month, 1).getDay();
 
-.cal-head {
-  text-align: center;
-  position: relative;
-  margin-bottom: 20px;
-}
+  // 🔚 Get the last date of the current month (e.g., 31, 30, 28)
+  const endDate = new Date(year, month + 1, 0).getDate();
 
-.cal-head h3 {
-  font-size: 18px;
-  font-weight: 600;
-  display: inline-block;
-  background: #fff;
-  padding: 13px 25px;
-  border-radius: 10px;
-}
+  // 🔚 Get the weekday index of the last date of the month
+  const end = new Date(year, month, endDate).getDay();
 
-.cal-head #prev, 
-.cal-head #next {
-  position: absolute;
-  top: 20px;
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-}
+  // 📆 Get the last date of the previous month
+  const endDatePrev = new Date(year, month, 0).getDate();
 
-.cal-head #prev:hover, 
-.cal-head #next:hover,
-.cal-head #prev:focus, 
-.cal-head #next:focus {
-  opacity: 0.8;
-  box-shadow: 3px 0px 3px #ccc;
-}
+  // 🧩 Placeholder for the HTML string of date elements
+  let datesHtml = "";
 
-.cal-head #prev:before, 
-.cal-head #next:before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-style: solid;
-  border-color: #141414;
-  border-width: 2px 2px 0 0;
-}
-
-.cal-head #prev {
-  left: 20px;
-  transform: translate(-50%, -50%) rotate(-135deg);
-}
-
-.cal-head #next {
-  right: -20px;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.days, .dates {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: start;
-}
-
-.days li, .dates li {
-  width: calc(100% / 7);
-  text-align: center;
-  font-size: 18px;
-}
-
-.days {
-  margin-bottom: 15px;
-}
-
-.days li {
-  font-weight: 500;
-  color: #7ba3ad;
-  text-transform: uppercase;
-}
-
-.dates li span {
-  background: #fff;
-  width: 100%;
-  height: 50px;
-  display: inline-block;
-  padding-top: 15px;
-  border-radius: 10px;
-  border: 2px solid #F5F5F5;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.dates li span:hover {
-  color: #7ba3ad;
-}
-
-.dates li.old span {
-  background: transparent;
-  color: #BDBDBD;
-}
-
-.dates li.today span {
-  background: #7ba3ad;
-  color: #fff;
-}
-
-/* 🌙 Dark Mode */
-@media (prefers-color-scheme: dark) {
-  .bg {
-    background: #1a1a1a;
+  // ◀️ Fill in last few days of the previous month (gray out)
+  for (let i = start; i > 0; i--) {
+    datesHtml += `<li class="old"><span>${endDatePrev - i + 1}</span></li>`;
   }
 
-  .calendar {
-    background: #2d2d2d;
-    box-shadow: 0px 5px 5px #111;
+  // 🔁 Loop through current month's dates
+  for (let i = 1; i <= endDate; i++) {
+    // ✅ Highlight today's date
+    let className =
+      i === date.getDate() &&
+      month === new Date().getMonth() &&
+      year === new Date().getFullYear()
+        ? ' class="today"'
+        : "";
+    datesHtml += `<li${className}><span>${i}</span></li>`;
   }
 
-  .cal-head h3,
-  .cal-head #prev,
-  .cal-head #next {
-    background: #3a3a3a;
-    color: #e0e0e0;
+  // ▶️ Fill in the beginning of the next month (gray out)
+  for (let i = end; i < 6; i++) {
+    datesHtml += `<li class="old"><span>${i - end + 1}</span></li>`;
   }
 
-  .cal-head #prev:before,
-  .cal-head #next:before {
-    border-color: #e0e0e0;
-  }
-
-  .days li {
-    color: #7ba3ad;
-  }
-
-  .dates li span {
-    background: #3a3a3a;
-    border-color: #2d2d2d;
-    color: #f0f0f0;
-  }
-
-  .dates li span:hover {
-    color: #7ba3ad;
-  }
-
-  .dates li.old span {
-    background: transparent;
-    color: #777;
-  }
-
-  .dates li.today span {
-    background: #7ba3ad;
-    color: #fff;
-  }
+  // 🖋️ Inject the generated calendar HTML and header text
+  dates.innerHTML = datesHtml;
+  header.textContent = `${months[month]} ${year}`;
 }
+
+/**
+ * ⏮️⏭️ Add click event listeners to the Previous and Next buttons
+ */
+nav.forEach(nav => {
+  nav.addEventListener("click", e => {
+    const btnId = e.target.id; // Get the ID of the clicked button
+
+    // ⬅️ If "prev" button clicked and current month is January
+    if (btnId === 'prev' && month === 0) {
+      year--;       // Go to previous year
+      month = 11;   // Set month to December
+    }
+    // ➡️ If "next" button clicked and current month is December
+    else if (btnId === 'next' && month === 11) {
+      year++;       // Go to next year
+      month = 0;    // Set month to January
+    }
+    // 🔁 In all other cases, simply increase or decrease the month
+    else {
+      month = (btnId === 'next') ? month + 1 : month - 1;
+    }
+
+    // 🧠 Update the `date` object and re-render calendar
+    date = new Date(year, month, new Date().getDate());
+    year = date.getFullYear();
+    month = date.getMonth();
+
+    renderCalendar();
+  });
+});
+
+// 🚀 Initial calendar rendering on page load
+renderCalendar();
