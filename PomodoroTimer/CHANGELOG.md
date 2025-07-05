@@ -18,7 +18,7 @@ This project follows [Semantic Versioning](https://semver.org/).
 - Session/break containers aligned using flexbox and margin fixes
 
 
-## [v1.0.0] - 2025-07-03
+## [v1.0.0] - 2025-06-25
 
 ### Added
 - Original Pomodoro timer layout
