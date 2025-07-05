@@ -3,8 +3,17 @@
 All notable changes to this project will be documented in this file.  
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [v1.3.0] - 2025-07-05
 
-## [v1.1.0] - 2025-07-03
+### Added
+- Dynamic calendar rendering based on current `month/year`
+- Navigation buttons for moving to previous/next months
+- `.today` class logic to highlight the current day
+- Dark mode styling using `prefers-color-scheme`
+- Flexbox-based responsive calendar layout
+- Enhanced hover transitions and interactive visuals
+
+## [v1.1.0] - 2025-07-04
 
 ### Added
 - Dark mode support using `prefers-color-scheme`
@@ -17,7 +26,7 @@ This project follows [Semantic Versioning](https://semver.org/).
 - Updated dark mode background colors for better row separation
 - Preserved original layout and dimensions based on original CodePen design
 
-## [v1.0.0] - 2025-07-03
+## [v1.0.0] - 2025-07-04
 
 ### Added
 - Original monthly calendar layout based on [@diptobd71’s CodePen](https://codepen.io/diptobd71/pen/wBBBRxr)
