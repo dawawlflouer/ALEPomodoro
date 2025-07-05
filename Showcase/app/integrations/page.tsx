@@ -56,7 +56,11 @@ export default function IntegrationsPage() {
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Button variant="outline" size="sm" className="flex items-center gap-1 bg-transparent">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="flex items-center gap-1 bg-transparent">
+                onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
               </Button>
@@ -96,7 +100,10 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button variant="outline" className="flex items-center gap-2 bg-transparent">
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2 bg-transparent">
+                  onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                   <Github className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-3 h-3" />
