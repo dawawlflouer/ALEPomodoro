@@ -3,7 +3,16 @@
 All notable changes to this project will be documented in this file.  
 This project follows [Semantic Versioning](https://semver.org/).
 
-## [v1.3.0] - 2025-07-05
+## [1.2.1] - 2025-07-05
+
+### Fixed
+- Removed unexpected list-style dots causing visual glitches on deployed layout
+- Corrected misalignment issue where calendar grid shifted to the right on Vercel
+
+### Changed
+- Updated layout styles for `.bg` and `.calendar` to properly center content
+
+## [v1.2.0] - 2025-07-05
 
 ### Added
 - Dynamic calendar rendering based on current `month/year`
