@@ -1,28 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
-body, html {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: transparent;
+.bg {
+  background: #ffffff;
   display: flex;
+  height: flex-start;
+  padding-top: 20px;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  font-family: "Poppins", sans-serif;
 }
 
 .calendar {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   width: 400px;
-  background: #f5f5f5;
+  background: #F5F5F5;
   box-shadow: 0px 5px 5px #ccc;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 20px;
 }
 
 .cal-head {
@@ -112,7 +112,7 @@ body, html {
   display: inline-block;
   padding-top: 15px;
   border-radius: 10px;
-  border: 2px solid #f5f5f5;
+  border: 2px solid #F5F5F5;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -123,7 +123,7 @@ body, html {
 
 .dates li.old span {
   background: transparent;
-  color: #bdbdbd;
+  color: #BDBDBD;
 }
 
 .dates li.today span {
@@ -133,20 +133,19 @@ body, html {
 
 /* 🌙 Dark Mode */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: transparent;
-    color: #e0e0e0;
+  .bg {
+    background: #1a1a1a;
   }
 
   .calendar {
-    background: #1e1e1e;
+    background: #2d2d2d;
     box-shadow: 0px 5px 5px #111;
   }
 
   .cal-head h3,
   .cal-head #prev,
   .cal-head #next {
-    background: #2c2c2c;
+    background: #3a3a3a;
     color: #e0e0e0;
   }
 
@@ -160,8 +159,8 @@ body, html {
   }
 
   .dates li span {
-    background: #2c2c2c;
-    border-color: #1e1e1e;
+    background: #3a3a3a;
+    border-color: #2d2d2d;
     color: #f0f0f0;
   }
 
