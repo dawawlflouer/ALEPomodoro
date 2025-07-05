@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 This project follows [Semantic Versioning](https://semver.org/).
 
 
-## [v1.0.0] - 2025-07-03
+## [v1.0.0] - 2025-07-04
 
 ### Added
 - Embedded music player using an iframe sourced from `notion.busiyi.world`
