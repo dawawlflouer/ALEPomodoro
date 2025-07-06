@@ -1,18 +1,20 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { categories, integrations } from "./data/integrations"
-import CategoryFilter from "./components/CategoryFilter"
-import SearchBar from "./components/SearchBar"
-import IntegrationGrid from "./components/IntegrationGrid"
-import Pagination from "./components/Pagination"
-import WidgetPreview from "./components/WidgetPreview"
-import { ThemeToggle } from "./components/ThemeToggle"
-import MobileCategoryFilter from "./components/MobileCategoryFilter"
+import { categories, integrations } from "@/data/integrations"
+import type { NotionWidget } from "@/data/types"
+
+import CategoryFilter from "@/integrations/components/CategoryFilter"
+import SearchBar from "@/integrations/components/SearchBar"
+import IntegrationGrid from "@/integrations/components/IntegrationGrid"
+import Pagination from "@/integrations/components/Pagination"
+import WidgetPreview from "@/integrations/components/WidgetPreview"
+import MobileCategoryFilter from "@/integrations/components/MobileCategoryFilter"
+import { ThemeToggle } from "@/integrations/components/ThemeToggle"
+
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from 'lucide-react'
+import { Github, ExternalLink } from "lucide-react"
 import { ThemeProvider } from "@/components/theme-provider"
-import type { NotionWidget } from "./data/types"
 
 const ITEMS_PER_PAGE = 30
 
@@ -36,7 +38,7 @@ export default function IntegrationsPage() {
   const totalPages = Math.ceil(filteredIntegrations.length / ITEMS_PER_PAGE)
   const paginatedIntegrations = filteredIntegrations.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
   )
 
   const handlePreview = (widget: NotionWidget) => {
@@ -47,7 +49,7 @@ export default function IntegrationsPage() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className="flex flex-col lg:flex-row h-screen bg-background overflow-hidden">
-        {/* Mobile header with category filter */}
+        {/* Mobile header */}
         <div className="lg:hidden bg-card border-b p-4">
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -56,11 +58,12 @@ export default function IntegrationsPage() {
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="flex items-center gap-1 bg-transparent"
-                onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+                onClick={() => window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")}
+              >
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
               </Button>
@@ -100,10 +103,11 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="flex items-center gap-2 bg-transparent"
-                  onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+                  onClick={() => window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")}
+                >
                   <Github className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-3 h-3" />
@@ -114,7 +118,7 @@ export default function IntegrationsPage() {
               onSearch={(query) => {
                 setSearchQuery(query)
                 setCurrentPage(1)
-              }}  
+              }}
             />
           </div>
 
@@ -128,13 +132,22 @@ export default function IntegrationsPage() {
             />
           </div>
 
+          {/* Grid */}
           <div className="flex-1 overflow-auto px-4 md:px-6">
             <IntegrationGrid integrations={paginatedIntegrations} onPreview={handlePreview} />
           </div>
+
+          {/* Pagination */}
           <div className="p-4 md:p-6 border-t">
             <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
           </div>
-          <WidgetPreview widget={previewWidget} isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)} />
+
+          {/* Widget Preview Modal */}
+          <WidgetPreview
+            widget={previewWidget}
+            isOpen={isPreviewOpen}
+            onClose={() => setIsPreviewOpen(false)}
+          />
         </main>
       </div>
     </ThemeProvider>
