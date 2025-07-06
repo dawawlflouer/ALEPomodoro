@@ -9,13 +9,13 @@ A minimal, embedded music player widget wrapped in a clean HTML container — de
 
 ## 📸 Preview  
 ### Original Embed Source  
-![Original Embed Screenshot](./screenshots/original-version.png)
+![Original Embed Screenshot](./screenshots/musicplayer-original.png)
 
 ### Wrapped Widget – Light Mode  
-![Light Mode Screenshot](./screenshots/light-mode.png)
+![Light Mode Screenshot](./screenshots/musicplayer-light.png)
 
 ### Wrapped Widget – Dark Mode  
-![Dark Mode Screenshot](./screenshots/dark-mode.png)
+![Dark Mode Screenshot](./screenshots/musicplayer-dark.png)
 
 
 ## ⚙️ Features

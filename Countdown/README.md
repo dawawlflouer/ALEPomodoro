@@ -9,13 +9,13 @@ A clean, minimalistic countdown widget built with HTML & CSS — featuring **dar
 
 ## 📸 Preview  
 ### Original Version  
-![Original Version Screenshot](./screenshots/original-version.png)
+![Original Version Screenshot](./screenshots/countdown-original.png)
 
 ### Light Mode  
-![Light Mode Screenshot](./screenshots/light-mode.png)
+![Light Mode Screenshot](./screenshots/countdown-light.png)
 
 ### Dark Mode  
-![Dark Mode Screenshot](./screenshots/dark-mode.png)
+![Dark Mode Screenshot](./screenshots/countdown-dark.png)
 
 
 ## ⚙️ Features

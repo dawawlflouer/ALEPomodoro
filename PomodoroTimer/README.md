@@ -9,13 +9,13 @@ A clean, minimalistic Pomodoro timer widget built with HTML & CSS — featuring 
 
 ## 📸 Preview
 ### Original Version
-![Light Mode Screenshot](./screenshots/original-version.png)
+![Light Mode Screenshot](./screenshots/pomodoro-original.png)
 
 ### Light Mode  
-![Light Mode Screenshot](./screenshots/light-mode.png)
+![Light Mode Screenshot](./screenshots/pomodoro-light.png)
 
 ### Dark Mode  
-![Dark Mode Screenshot](./screenshots/dark-mode.png)
+![Dark Mode Screenshot](./screenshots/pomodoro-dark.png)
 
 
 ## ⚙️ Features

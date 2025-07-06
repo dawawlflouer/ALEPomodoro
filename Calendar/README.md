@@ -9,13 +9,13 @@ A clean, minimalistic monthly calendar widget built with HTML, CSS, and JS — f
 
 ## 📸 Preview  
 ### Original Version  
-![Original Version Screenshot](./screenshots/original-version.png)
+![Original Version Screenshot](./screenshots/calendar-original.png)
 
 ### Light Mode  
-![Light Mode Screenshot](./screenshots/light-mode.png)
+![Light Mode Screenshot](./screenshots/calendar-light.png)
 
 ### Dark Mode  
-![Dark Mode Screenshot](./screenshots/dark-mode.png)
+![Dark Mode Screenshot](./screenshots/calendar-dark.png)
 
 
 ## ⚙️ Features
