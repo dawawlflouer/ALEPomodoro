@@ -33,3 +33,4 @@ A clean, minimalistic monthly calendar widget built with HTML, CSS, and JS — f
 This project was originally based on  
 [@diptobd71’s Monthly Calendar on CodePen](https://codepen.io/diptobd71/pen/wBBBRxr)  
 and has been modified for modern theme compatibility, improved readability, and single-file deployment.
+ 
