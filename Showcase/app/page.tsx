@@ -1,17 +1,17 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { categories, integrations } from "./data/integrations"
-import CategoryFilter from "./integrations/components/CategoryFilter"
-import SearchBar from "./integrations/components/SearchBar"
-import IntegrationGrid from "./integrations/components/IntegrationGrid"
-import Pagination from "./integrations/components/Pagination"
+import { categories, integrations } from "../data/integrations"
+import CategoryFilter from "./components/CategoryFilter"
+import SearchBar from "./components/SearchBar"
+import IntegrationGrid from "./components/IntegrationGrid"
+import Pagination from "./components/Pagination"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from 'lucide-react'
-import WidgetPreview from "./integrations/components/WidgetPreview"
-import type { NotionWidget } from "./data/types"
-import { ThemeToggle } from "./integrations/components/ThemeToggle"
-import MobileCategoryFilter from "./integrations/components/MobileCategoryFilter"
+import { Github, ExternalLink } from "lucide-react"
+import WidgetPreview from "./components/WidgetPreview"
+import type { NotionWidget } from "../data/types"
+import { ThemeToggle } from "./components/ThemeToggle"
+import MobileCategoryFilter from "./components/MobileCategoryFilter"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const ITEMS_PER_PAGE = 30
@@ -56,7 +56,11 @@ export default function IntegrationsPage() {
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Button variant="outline" size="sm" className="flex items-center gap-1 bg-transparent">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="flex items-center gap-1 bg-transparent">
+                onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
               </Button>
@@ -96,7 +100,10 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button variant="outline" className="flex items-center gap-2 bg-transparent">
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2 bg-transparent">
+                  onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                   <Github className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-3 h-3" />
