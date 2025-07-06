@@ -35,5 +35,15 @@
       </div>
     </div>
   </main>
+
+  <!-- Widget auto-resize script -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data === "getHeight") {
+        const height = document.documentElement.scrollHeight;
+        event.source.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
+  </script>
 </body>
 </html>

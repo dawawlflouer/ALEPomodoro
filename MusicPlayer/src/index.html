@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      padding-top: 20px;
+      padding-top: 0px;
       background: transparent;
       display: flex;
       justify-content: center;
@@ -34,5 +34,23 @@
       allow="autoplay"
     ></iframe>
   </div>
+
+  <script>
+    // Send height after load
+    window.addEventListener("load", () => {
+      const height = document.documentElement.scrollHeight;
+      if (window.parent) {
+        window.parent.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
+
+    // Respond to height requests from parent
+    window.addEventListener("message", (event) => {
+      if (event.data === "getHeight") {
+        const height = document.documentElement.scrollHeight;
+        event.source.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
+  </script>
 </body>
 </html>

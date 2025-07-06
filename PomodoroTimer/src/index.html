@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>ALE Pomodoro Timer</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css'><link rel="stylesheet" href="./style.css">
-
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css'>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div id="root"></div>
-<!-- partial -->
+  <!-- partial:index.partial.html -->
+  <div id="root"></div>
+  <!-- partial -->
   <script type="module" src="./script.js"></script>
 
+  <script>
+    // Send height after page load
+    window.addEventListener("load", () => {
+      const height = document.documentElement.scrollHeight;
+      if (window.parent) {
+        window.parent.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
+
+    // Respond to height requests from parent
+    window.addEventListener("message", (event) => {
+      if (event.data === "getHeight") {
+        const height = document.documentElement.scrollHeight;
+        event.source.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
+  </script>
 </body>
 </html>

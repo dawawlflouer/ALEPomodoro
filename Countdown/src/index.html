@@ -14,14 +14,14 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: start;
+      align-items: flex-start;
       height: 100vh;
       overflow: hidden;
       color: #000;
     }
 
     #counter {
-      margin-top: 20px;
+      margin-top: 0px;
       padding: 10px 20px;
       border-radius: 12px;
       display: inline-block;
@@ -34,7 +34,7 @@
       height: 40px;
       border-radius: 10px;
       background-color: #d6e4ef;
-      border: 3px solid #a7b6c2; /* 3 shades darker */
+      border: 3px solid #a7b6c2;
       box-shadow: 2px 2px 1px 0px #a7b6c2;
     }
 
@@ -60,7 +60,7 @@
       }
       .box {
         background-color: #7ba3ad;
-        border: 3px solid #4f6e75; /* 3 shades darker */
+        border: 3px solid #4f6e75;
         box-shadow: 2px 2px 1px 0px #4f6e75;
       }
     }
@@ -108,10 +108,26 @@
         left_seconds.innerHTML = "0<br> <span class='small'> secs </span>";
         clearInterval(timer);
       }
+
+      // Send height after update
+      if (window.parent) {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage(`widgetHeight:${height}`, "*");
+      }
     }
 
     const timer = setInterval(showRemaining, 1000);
     CountDownTimer();
+  </script>
+
+  <!-- Listener for height requests -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data === "getHeight") {
+        const height = document.documentElement.scrollHeight;
+        event.source.postMessage(`widgetHeight:${height}`, "*");
+      }
+    });
   </script>
 </body>
 </html>
