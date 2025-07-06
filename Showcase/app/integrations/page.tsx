@@ -1,17 +1,19 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { categories, integrations } from "../data/integrations"
-import CategoryFilter from "../components/CategoryFilter"
-import SearchBar from "../components/SearchBar"
-import IntegrationGrid from "../components/IntegrationGrid"
-import Pagination from "../components/Pagination"
+import { categories, integrations } from "@/data/integrations"
+import type { NotionWidget } from "@/data/types"
+
+import CategoryFilter from "@/integrations/components/CategoryFilter"
+import SearchBar from "@/integrations/components/SearchBar"
+import IntegrationGrid from "@/integrations/components/IntegrationGrid"
+import Pagination from "@/integrations/components/Pagination"
+import WidgetPreview from "@/integrations/components/WidgetPreview"
+import MobileCategoryFilter from "@/integrations/components/MobileCategoryFilter"
+import { ThemeToggle } from "@/integrations/components/ThemeToggle"
+
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
-import WidgetPreview from "../components/WidgetPreview"
-import type { NotionWidget } from "../data/types"
-import { ThemeToggle } from "../components/ThemeToggle"
-import MobileCategoryFilter from "../components/MobileCategoryFilter"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const ITEMS_PER_PAGE = 30
@@ -25,8 +27,7 @@ export default function IntegrationsPage() {
 
   const filteredIntegrations = useMemo(() => {
     return integrations.filter((integration) => {
-      const categoryMatch =
-        selectedCategory === "All" || integration.category === selectedCategory
+      const categoryMatch = selectedCategory === "All" || integration.category === selectedCategory
       const searchMatch =
         integration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         integration.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -53,9 +54,7 @@ export default function IntegrationsPage() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h1 className="text-xl font-bold">ALE Study Hub Widgets</h1>
-              <p className="text-muted-foreground text-xs">
-                Custom widgets for Smart Cards Architecture
-              </p>
+              <p className="text-muted-foreground text-xs">Custom widgets for Smart Cards Architecture</p>
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
@@ -63,9 +62,7 @@ export default function IntegrationsPage() {
                 variant="outline"
                 size="sm"
                 className="flex items-center gap-1 bg-transparent"
-                onClick={() =>
-                  window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")
-                }
+                onClick={() => window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")}
               >
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
@@ -109,9 +106,7 @@ export default function IntegrationsPage() {
                 <Button
                   variant="outline"
                   className="flex items-center gap-2 bg-transparent"
-                  onClick={() =>
-                    window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")
-                  }
+                  onClick={() => window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")}
                 >
                   <Github className="w-4 h-4" />
                   View on GitHub
@@ -137,16 +132,17 @@ export default function IntegrationsPage() {
             />
           </div>
 
+          {/* Grid */}
           <div className="flex-1 overflow-auto px-4 md:px-6">
             <IntegrationGrid integrations={paginatedIntegrations} onPreview={handlePreview} />
           </div>
+
+          {/* Pagination */}
           <div className="p-4 md:p-6 border-t">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
           </div>
+
+          {/* Widget Preview Modal */}
           <WidgetPreview
             widget={previewWidget}
             isOpen={isPreviewOpen}
