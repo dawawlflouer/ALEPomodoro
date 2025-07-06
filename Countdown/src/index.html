@@ -6,10 +6,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
   <title>ALE 2026 Countdown</title>
   <style>
+    /* Default Light Theme */
     body {
       text-align: center;
       font-family: monospace;
-      background-color: transparent;
+      background-color: #ffffff;
+      color: #000000;
       margin: 0;
       padding: 0;
       display: flex;
@@ -17,7 +19,6 @@
       align-items: flex-start;
       height: 100vh;
       overflow: hidden;
-      color: #000;
     }
 
     #counter {
@@ -54,8 +55,10 @@
       font-weight: lighter;
     }
 
+    /* Auto Dark Theme via media query */
     @media (prefers-color-scheme: dark) {
       body {
+        background-color: #1a1a1a;
         color: #f0f0f0;
       }
       .box {
@@ -64,7 +67,42 @@
         box-shadow: 2px 2px 1px 0px #4f6e75;
       }
     }
+
+    /* Fallback for ?theme=dark */
+    .dark body {
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    .dark .box {
+      background-color: #7ba3ad;
+      border: 3px solid #4f6e75;
+      box-shadow: 2px 2px 1px 0px #4f6e75;
+    }
+
+    /* Fallback for ?theme=light */
+    .light body {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .light .box {
+      background-color: #d6e4ef;
+      border: 3px solid #a7b6c2;
+      box-shadow: 2px 2px 1px 0px #a7b6c2;
+    }
   </style>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const theme = params.get("theme");
+
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else if (theme === "light") {
+      document.documentElement.classList.add("light");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
 </head>
 <body>
   <div id="counter">
@@ -97,19 +135,19 @@
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        left_days.innerHTML = days + "<br> <span class='small'> days </span>";
-        left_hours.innerHTML = hours + "<br> <span class='small'> hours </span>";
-        left_minutes.innerHTML = minutes + "<br> <span class='small'> mins </span>";
-        left_seconds.innerHTML = seconds + "<br> <span class='small'> secs </span>";
+        left_days.innerHTML = days + "<br><span class='small'> days </span>";
+        left_hours.innerHTML = hours + "<br><span class='small'> hours </span>";
+        left_minutes.innerHTML = minutes + "<br><span class='small'> mins </span>";
+        left_seconds.innerHTML = seconds + "<br><span class='small'> secs </span>";
       } else {
-        left_days.innerHTML = "0<br> <span class='small'> days </span>";
-        left_hours.innerHTML = "0<br> <span class='small'> hours </span>";
-        left_minutes.innerHTML = "0<br> <span class='small'> mins </span>";
-        left_seconds.innerHTML = "0<br> <span class='small'> secs </span>";
+        left_days.innerHTML = "0<br><span class='small'> days </span>";
+        left_hours.innerHTML = "0<br><span class='small'> hours </span>";
+        left_minutes.innerHTML = "0<br><span class='small'> mins </span>";
+        left_seconds.innerHTML = "0<br><span class='small'> secs </span>";
         clearInterval(timer);
       }
 
-      // Send height after update
+      // Send height after update (for widget usage)
       if (window.parent) {
         const height = document.documentElement.scrollHeight;
         window.parent.postMessage(`widgetHeight:${height}`, "*");
@@ -120,7 +158,7 @@
     CountDownTimer();
   </script>
 
-  <!-- Listener for height requests -->
+  <!-- Listener for widget height polling -->
   <script>
     window.addEventListener("message", (event) => {
       if (event.data === "getHeight") {

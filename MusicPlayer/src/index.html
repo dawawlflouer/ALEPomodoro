@@ -4,27 +4,59 @@
   <meta charset="UTF-8" />
   <title>Music Player</title>
   <style>
+    /* Default Light Mode */
     body {
       margin: 0;
       padding-top: 0px;
-      background: transparent;
+      background-color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       height: 100vh;
     }
+
     .wrapper {
       width: 380px;
       height: 90px;
       border-radius: 12px;
       overflow: hidden;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
+    /* Auto Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a1a1a;
+      }
+    }
+
+    /* Manual Fallbacks */
+    .dark body {
+      background-color: #1a1a1a;
+    }
+
+    .light body {
+      background-color: #ffffff;
+    }
   </style>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const theme = params.get("theme");
+
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else if (theme === "light") {
+      document.documentElement.classList.add("light");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
 </head>
 <body>
   <div class="wrapper">
