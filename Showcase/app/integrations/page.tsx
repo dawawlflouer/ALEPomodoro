@@ -2,17 +2,17 @@
 
 import { useState, useMemo } from "react"
 import { categories, integrations } from "./data/integrations"
-import CategoryFilter from "./integrations/components/CategoryFilter"
-import SearchBar from "./integrations/components/SearchBar"
-import IntegrationGrid from "./integrations/components/IntegrationGrid"
-import Pagination from "./integrations/components/Pagination"
+import CategoryFilter from "./components/CategoryFilter"
+import SearchBar from "./components/SearchBar"
+import IntegrationGrid from "./components/IntegrationGrid"
+import Pagination from "./components/Pagination"
+import WidgetPreview from "./components/WidgetPreview"
+import { ThemeToggle } from "./components/ThemeToggle"
+import MobileCategoryFilter from "./components/MobileCategoryFilter"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from 'lucide-react'
-import WidgetPreview from "./integrations/components/WidgetPreview"
-import type { NotionWidget } from "./data/types"
-import { ThemeToggle } from "./integrations/components/ThemeToggle"
-import MobileCategoryFilter from "./integrations/components/MobileCategoryFilter"
 import { ThemeProvider } from "@/components/theme-provider"
+import type { NotionWidget } from "./data/types"
 
 const ITEMS_PER_PAGE = 30
 
@@ -59,7 +59,7 @@ export default function IntegrationsPage() {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="flex items-center gap-1 bg-transparent">
+                className="flex items-center gap-1 bg-transparent"
                 onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
@@ -102,7 +102,7 @@ export default function IntegrationsPage() {
                 <ThemeToggle />
                 <Button 
                   variant="outline" 
-                  className="flex items-center gap-2 bg-transparent">
+                  className="flex items-center gap-2 bg-transparent"
                   onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
                   <Github className="w-4 h-4" />
                   View on GitHub
@@ -114,7 +114,7 @@ export default function IntegrationsPage() {
               onSearch={(query) => {
                 setSearchQuery(query)
                 setCurrentPage(1)
-              }}
+              }}  
             />
           </div>
 
