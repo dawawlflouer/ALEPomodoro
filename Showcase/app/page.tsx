@@ -51,16 +51,12 @@ export default function IntegrationsPage() {
         <div className="lg:hidden bg-card border-b p-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-xl font-bold">ALE Study Hub Widgets</h1>
-              <p className="text-muted-foreground text-xs">Custom widgets for Smart Cards Architecture</p>
+              <h1 className="text-xl font-bold">Notion Widgets</h1>
+              <p className="text-muted-foreground text-xs">Custom widgets for Notion</p>
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="flex items-center gap-1 bg-transparent">
-                onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+              <Button variant="outline" size="sm" className="flex items-center gap-1 bg-transparent">
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
               </Button>
@@ -93,17 +89,14 @@ export default function IntegrationsPage() {
           <div className="hidden lg:block p-4 md:p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold">ALE Study Hub Widgets</h1>
+                <h1 className="text-2xl font-bold">Notion Widgets Monorepo</h1>
                 <p className="text-muted-foreground text-sm mt-1">
-                  Collection of custom widgets for Smart Card Architecture
+                  Collection of custom widgets for enhancing your Notion workspace
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button 
-                  variant="outline" 
-                  className="flex items-center gap-2 bg-transparent">
-                  onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+                <Button variant="outline" className="flex items-center gap-2 bg-transparent">
                   <Github className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-3 h-3" />
