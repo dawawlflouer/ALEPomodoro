@@ -2,16 +2,16 @@
 
 import { useState, useMemo } from "react"
 import { categories, integrations } from "../data/integrations"
-import CategoryFilter from "./components/CategoryFilter"
-import SearchBar from "./components/SearchBar"
-import IntegrationGrid from "./components/IntegrationGrid"
-import Pagination from "./components/Pagination"
+import CategoryFilter from "../components/CategoryFilter"
+import SearchBar from "../components/SearchBar"
+import IntegrationGrid from "../components/IntegrationGrid"
+import Pagination from "../components/Pagination"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
-import WidgetPreview from "./components/WidgetPreview"
+import WidgetPreview from "../components/WidgetPreview"
 import type { NotionWidget } from "../data/types"
-import { ThemeToggle } from "./components/ThemeToggle"
-import MobileCategoryFilter from "./components/MobileCategoryFilter"
+import { ThemeToggle } from "../components/ThemeToggle"
+import MobileCategoryFilter from "../components/MobileCategoryFilter"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const ITEMS_PER_PAGE = 30
@@ -25,7 +25,8 @@ export default function IntegrationsPage() {
 
   const filteredIntegrations = useMemo(() => {
     return integrations.filter((integration) => {
-      const categoryMatch = selectedCategory === "All" || integration.category === selectedCategory
+      const categoryMatch =
+        selectedCategory === "All" || integration.category === selectedCategory
       const searchMatch =
         integration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         integration.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -36,7 +37,7 @@ export default function IntegrationsPage() {
   const totalPages = Math.ceil(filteredIntegrations.length / ITEMS_PER_PAGE)
   const paginatedIntegrations = filteredIntegrations.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
   )
 
   const handlePreview = (widget: NotionWidget) => {
@@ -47,20 +48,25 @@ export default function IntegrationsPage() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className="flex flex-col lg:flex-row h-screen bg-background overflow-hidden">
-        {/* Mobile header with category filter */}
+        {/* Mobile header */}
         <div className="lg:hidden bg-card border-b p-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-xl font-bold">Notion Widgets</h1>
-              <p className="text-muted-foreground text-xs">Custom widgets for Notion</p>
+              <h1 className="text-xl font-bold">ALE Study Hub Widgets</h1>
+              <p className="text-muted-foreground text-xs">
+                Custom widgets for Smart Cards Architecture
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="flex items-center gap-1 bg-transparent">
-                onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-1 bg-transparent"
+                onClick={() =>
+                  window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")
+                }
+              >
                 <Github className="w-3 h-3" />
                 <span className="hidden xs:inline">GitHub</span>
               </Button>
@@ -93,17 +99,20 @@ export default function IntegrationsPage() {
           <div className="hidden lg:block p-4 md:p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold">Notion Widgets Monorepo</h1>
+                <h1 className="text-2xl font-bold">ALE Study Hub Widgets</h1>
                 <p className="text-muted-foreground text-sm mt-1">
-                  Collection of custom widgets for enhancing your Notion workspace
+                  Collection of custom widgets for Smart Card Architecture
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button 
-                  variant="outline" 
-                  className="flex items-center gap-2 bg-transparent">
-                  onClick={() => window.open('https://github.com/dawawlflouer/ALEStudyHub', '_blank')}>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 bg-transparent"
+                  onClick={() =>
+                    window.open("https://github.com/dawawlflouer/ALEStudyHub", "_blank")
+                  }
+                >
                   <Github className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-3 h-3" />
@@ -132,9 +141,17 @@ export default function IntegrationsPage() {
             <IntegrationGrid integrations={paginatedIntegrations} onPreview={handlePreview} />
           </div>
           <div className="p-4 md:p-6 border-t">
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </div>
-          <WidgetPreview widget={previewWidget} isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)} />
+          <WidgetPreview
+            widget={previewWidget}
+            isOpen={isPreviewOpen}
+            onClose={() => setIsPreviewOpen(false)}
+          />
         </main>
       </div>
     </ThemeProvider>
