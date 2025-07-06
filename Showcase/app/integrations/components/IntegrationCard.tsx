@@ -54,22 +54,6 @@ export default function IntegrationCard({ integration, onPreview }: IntegrationC
             : integration.description}
         </p>
 
-        {/* Widget preview */}
-        <div className="rounded-2xl overflow-hidden border border-muted bg-white dark:bg-transparent mb-3">
-          <iframe
-            src={`/widgets/${integration.slug}/index.html?theme=auto`}
-            title={`${integration.name} preview`}
-            style={{
-              width: "100%",
-              height: "360px",
-              border: "none",
-              borderRadius: "1rem",
-              backgroundColor: "transparent",
-            }}
-            loading="lazy"
-          />
-        </div>
-
         <div className="mt-auto space-y-2">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span className="truncate">Updated: {new Date(integration.lastUpdated).toLocaleDateString()}</span>

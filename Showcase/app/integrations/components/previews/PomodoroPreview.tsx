@@ -2,12 +2,15 @@
 
 export default function CalendarPreview() {
   return (
-    <div className="w-full max-w-sm aspect-[4/5] mx-auto border rounded overflow-hidden bg-muted">
+    <div className="w-full overflow-auto">
       <iframe
-        src="https://alestudyhub-pomodoro.vercel.app/"
+        src="https://alestudyhub-pomodoro.vercel.app/?theme=light"
         title="Calendar Widget Preview"
-        className="w-full h-full"
-        style={{ border: "none" }}
+        style={{
+          border: "none",
+          backgroundColor: "transparent",
+        }}
+        className="rounded w-full"
       />
     </div>
   )
