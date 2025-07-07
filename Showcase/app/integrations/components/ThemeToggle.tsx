@@ -8,12 +8,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 type Theme = "light" | "dark" | "system"
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("system")
+  const [theme, setTheme] = useState<Theme>("light")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const savedTheme = (localStorage.getItem("theme") as Theme) || "system"
+    const savedTheme = (localStorage.getItem("theme") as Theme) || "light"
     setTheme(savedTheme)
     applyTheme(savedTheme)
   }, [])
